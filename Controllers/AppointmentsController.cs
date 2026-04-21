@@ -74,7 +74,7 @@ namespace APBD_TASK6.Controllers
             await connection.OpenAsync();
 
             int newId;
-            await using (var transaction = (SqlTransaction)await connection.BeginTransaction())
+            await using (var transaction = (SqlTransaction)await connection.BeginTransactionAsync())
             {
                 const string insertSql = """
                                          INSERT INTO dbo.Appointments (IdDoctor, IdPatient, AppointmentDate, Reason, Status)
