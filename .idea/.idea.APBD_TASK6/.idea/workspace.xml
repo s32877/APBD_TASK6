@@ -10,10 +10,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="53adb459-4589-4878-9bcf-90cb53568990" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/DTOs/AppointmentDetailsDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DTOs/UpdateAppointmentRequestDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.APBD_TASK6/.idea/dataSources/be2ec737-a5dc-407f-a509-b2071f26416b.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.APBD_TASK6/.idea/dataSources/be2ec737-a5dc-407f-a509-b2071f26416b.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.APBD_TASK6/.idea/data_source_mapping.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.APBD_TASK6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.APBD_TASK6/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controllers/AppointmentsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/AppointmentsController.cs" afterDir="false" />
     </list>
@@ -141,7 +137,7 @@
       <updated>1776774312964</updated>
       <workItem from="1776774314895" duration="578000" />
       <workItem from="1776774949582" duration="3036000" />
-      <workItem from="1777297125377" duration="4013000" />
+      <workItem from="1777297125377" duration="8252000" />
     </task>
     <task id="LOCAL-00001" summary="a">
       <option name="closed" value="true" />
@@ -151,7 +147,23 @@
       <option name="project" value="LOCAL" />
       <updated>1776774421941</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="resumed work">
+      <option name="closed" value="true" />
+      <created>1777303766848</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1777303766849</updated>
+    </task>
+    <task id="LOCAL-00003" summary="hope on the right track">
+      <option name="closed" value="true" />
+      <created>1777306633187</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1777306633187</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -173,7 +185,9 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="a" />
-    <option name="LAST_COMMIT_MESSAGE" value="a" />
+    <MESSAGE value="resumed work" />
+    <MESSAGE value="hope on the right track" />
+    <option name="LAST_COMMIT_MESSAGE" value="hope on the right track" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
