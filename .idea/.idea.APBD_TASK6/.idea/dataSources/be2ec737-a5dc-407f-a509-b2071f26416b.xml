@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="Microsoft SQL Server LocalDB (JetBrains)">
-  <database-model serializer="dbm" dbms="MSSQL_LOCALDB" family-id="MSSQL_LOCALDB" format-version="4.53">
+  <database-model serializer="dbm" dbms="MSSQL_LOCALDB" family-id="MSSQL_LOCALDB" format-version="4.54">
     <root id="1">
       <Dbms>MSSQL_LOCALDB</Dbms>
       <Grants>2|||2|connect|G

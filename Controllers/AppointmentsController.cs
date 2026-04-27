@@ -94,5 +94,15 @@ namespace APBD_TASK6.Controllers
 
             return CreatedAtRoute(nameof(GetAppointments), new { id = newId }, null);
         }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateAppointment([FromBody] UpdateAppointmentRequestDto request)
+        {
+            await using var connection = new SqlConnection(_connectionString);
+            await connection.OpenAsync();
+            
+            
+            return null;
+        }
     }
 }
