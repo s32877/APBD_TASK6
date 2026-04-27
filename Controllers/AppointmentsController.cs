@@ -127,7 +127,7 @@ namespace APBD_TASK6.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateAppointment([FromBody] CreateAppointmentRequestDto request)
         {
-            if (request.AppointmentDate < DateTime.UtcNow)
+            if (request.AppointmentDate <= DateTime.UtcNow)
             {
                 return BadRequest(new ErrorResponseDto("Appointment date cannot be in the past."));
             }
