@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Data;
+using Microsoft.AspNetCore.Mvc;
 using APBD_TASK6.DTOs;
 using Microsoft.Data.SqlClient;
 
@@ -61,6 +62,64 @@ namespace APBD_TASK6.Controllers
 
             return Ok(results);
         }
+
+        [HttpGet("{idAppointment:int}")]
+        public async Task<IActionResult> GetAppointment(int idAppointment)
+        {
+            const string sql = """
+                SELECT
+                    a.IdAppointment,
+                    a.AppointmentDate,
+                    a.Status,
+                    a.Reason,
+                    a.InternalNotes,
+                    a.CreatedAt,
+                    p.FirstName + N' ' + p.LastName AS PatientFullName,
+                    p.Email AS PatientEmail,
+                    p.PhoneNumber AS PatientPhone,
+                    d.FirstName + N' ' + d.LastName AS DoctorFullName,
+                    d.LicenseNumber,
+                    s.Name AS Specialization
+                FROM dbo.Appointments a
+                JOIN dbo.Patients        p ON p.IdPatient        = a.IdPatient
+                JOIN dbo.Doctors         d ON d.IdDoctor         = a.IdDoctor
+                JOIN dbo.Specializations s ON s.IdSpecialization = d.IdSpecialization
+                WHERE a.IdAppointment = @IdAppointment;
+                """;
+ 
+            await using var connection = new SqlConnection(_connectionString);
+            await using var command = new SqlCommand(sql, connection);
+            command.Parameters.AddWithValue("@IdAppointment", idAppointment);
+ 
+            await connection.OpenAsync();
+            await using var reader = await command.ExecuteReaderAsync();
+ 
+            if (!await reader.ReadAsync())
+                return NotFound(new ErrorResponseDto($"Appointment {idAppointment} not found."));
+ 
+            var dto = new AppointmentDetailsDto
+            {
+                IdAppointment = reader.GetInt32(reader.GetOrdinal("IdAppointment")),
+                AppointmentDate = reader.GetDateTime(reader.GetOrdinal("AppointmentDate")),
+                Status = reader.GetString(reader.GetOrdinal("Status")),
+                Reason = reader.GetString(reader.GetOrdinal("Reason")),
+                InternalNotes = reader.IsDBNull(reader.GetOrdinal("InternalNotes"))
+                                          ? null
+                                          : reader.GetString(reader.GetOrdinal("InternalNotes")),
+                CreatedAt = reader.GetDateTime(reader.GetOrdinal("CreatedAt")),
+                PatientFullName = reader.GetString(reader.GetOrdinal("PatientFullName")),
+                PatientEmail = reader.GetString(reader.GetOrdinal("PatientEmail")),
+                PatientPhone = reader.IsDBNull(reader.GetOrdinal("PatientPhone"))
+                                          ? string.Empty
+                                          : reader.GetString(reader.GetOrdinal("PatientPhone")),
+                DoctorFullName = reader.GetString(reader.GetOrdinal("DoctorFullName")),
+                DoctorLicenseNumber = reader.GetString(reader.GetOrdinal("LicenseNumber")),
+                Specialization = reader.GetString(reader.GetOrdinal("Specialization")),
+            };
+ 
+            return Ok(dto);
+        }
+ 
 
         [HttpPost]
         public async Task<IActionResult> CreateAppointment([FromBody] CreateAppointmentRequestDto request)
